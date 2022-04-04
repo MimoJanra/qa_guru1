@@ -2,13 +2,18 @@ package com.demoqa;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
+
+import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class AutomationRegistrationFormTest {
 
@@ -32,11 +37,25 @@ public class AutomationRegistrationFormTest {
     @BeforeAll
     static void BeforeAll(){
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
     }
 
-    @Test
-    void fillSubmitCloseRegistrationForm() {
+    public static Stream<Arguments> browserResolution() {
+        return Stream.of(
+                arguments("1920x1080"),
+                arguments("1366x768"),
+                arguments("1536x864"),
+                arguments("1440x900"),
+                arguments("1600x900"),
+                arguments("1290x1024"),
+                arguments("768x1024"),
+                arguments("1280x720")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("browserResolution")
+    void fillSubmitCloseRegistrationForm(String resolution) {
+        Configuration.browserSize = resolution;
         open(studentRegistrationForm);
 
         //close ads
@@ -48,6 +67,7 @@ public class AutomationRegistrationFormTest {
         $("#userEmail").setValue(email);
         $(byText(gender)).click();
         $("#userNumber").setValue(mobile);
+        $("#dateOfBirthInput").scrollIntoView(true).click();
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(birthMonth);
         $(".react-datepicker__year-select").selectOption(birthYear);
