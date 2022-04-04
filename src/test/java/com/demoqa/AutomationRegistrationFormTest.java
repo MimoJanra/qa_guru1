@@ -64,24 +64,24 @@ public class AutomationRegistrationFormTest {
 
         // Check form
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $x(getValueCell("Student Name")).shouldHave(text(fistName + " " + lastName));
-        $x(getValueCell("Student Email")).shouldHave(text(email));
-        $x(getValueCell("Gender")).shouldHave(text(gender));
-        $x(getValueCell("Mobile")).shouldHave(text(mobile));
-        $x(getValueCell("Date of Birth")).shouldHave(text(birthDay + " " + birthMonth + "," + birthYear));
-        $x(getValueCell("Subjects")).shouldHave(text(subjects));
-        $x(getValueCell("Hobbies")).shouldHave(text(hobbies));
-        $x(getValueCell("Picture")).shouldHave(text("1.png"));
-        $x(getValueCell("Address")).shouldHave(text(address));
-        $x(getValueCell("Mobile")).shouldHave(text(mobile));
-        $x(getValueCell("State and City")).shouldHave(text(state + " " + city));
+        $x(getCell("Student Name")).shouldHave(text(fistName + " " + lastName));
+        $x(getCell("Student Email")).shouldHave(text(email));
+        $x(getCell("Gender")).shouldHave(text(gender));
+        $x(getCell("Mobile")).shouldHave(text(mobile));
+        $x(getCell("Date of Birth")).shouldHave(text(birthDay + " " + birthMonth + "," + birthYear));
+        $x(getCell("Subjects")).shouldHave(text(subjects));
+        $x(getCell("Hobbies")).shouldHave(text(hobbies));
+        $x(getCell("Picture")).shouldHave(text("1.png"));
+        $x(getCell("Address")).shouldHave(text(address));
+        $x(getCell("Mobile")).shouldHave(text(mobile));
+        $x(getCell("State and City")).shouldHave(text(state + " " + city));
 
         $("#closeLargeModal").click();
 
         $("#example-modal-sizes-title-lg").shouldNotBe(visible);
     }
 
-    public static String getValueCell(String label) {
+    public static String getCell(String label) {
         return "//td[preceding-sibling::td='" + label + "']";
     }
 }
