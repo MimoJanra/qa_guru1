@@ -23,7 +23,7 @@ public class AutomationRegistrationFormTest {
     String lastName = "Velikolepniy";
     String email = "gogi@behinavole.pro";
     String gender = "Other";
-    String mobile = "1234567890";
+    String mobile = "1234567891";
     String birthDay = "11";
     String birthMonth = "February";
     String birthYear = "1901";
