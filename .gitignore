@@ -23,7 +23,6 @@
     *.iml
 
     # Project gen files
-    .idea
     .allure/
     .gradle/
     allure-results/
@@ -39,3 +38,4 @@
     .vscode
     /gradlew
     /gradlew.bat
+/.idea/
