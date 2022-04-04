@@ -12,9 +12,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationRegistrationFormTest {
 
-    //Path
     String studentRegistrationForm = "/automation-practice-form";
-    //Test data
+
     String fistName = "Gogi";
     String lastName = "Velikolepniy";
     String email = "gogi@behinavole.pro";
@@ -43,7 +42,7 @@ public class AutomationRegistrationFormTest {
         //close ads
         $("#close-fixedban").click();
 
-        //Filling and submitting the form
+        //Filling form
         $("#firstName").setValue(fistName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
